@@ -122,24 +122,8 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
+	  usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
 
-//		usb_hid_keyboard_press_and_release_key(USB_HID_MOD_RIGHT_SHIFT, USB_HID_KEY_F6);
-		usb_hid_keyboard_send_string("Hello World HID!\r");
-
-//		usb_hid_keyboard_press_and_release_key(USB_HID_MOD_RIGHT_SHIFT, USB_HID_KEY_F6);
-//		usb_hid_keyboard_press_and_release_key(USB_HID_MOD_RIGHT_SHIFT, USB_HID_KEY_F6);
-//
-//		usb_hid_presenter_execute(PPT_BTN_NEXT);
-//	    HAL_Delay(200);
-//
-//		usb_hid_presenter_execute(PPT_BTN_NEXT);
-//	    HAL_Delay(200);
-//		usb_hid_presenter_execute(PPT_BTN_PREV);
-//	    HAL_Delay(200);
-//		usb_hid_presenter_execute(PPT_BTN_PREV);
-//	    HAL_Delay(200);
-
-//	  usb_hid_keyboard_press_and_release_key(USB_HID_MOD_RIGHT_SHIFT, USB_HID_KEY_8);
   /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

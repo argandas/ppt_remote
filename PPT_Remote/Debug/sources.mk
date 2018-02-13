@@ -18,6 +18,7 @@ SUBDIRS := \
 Drivers/STM32L4xx_HAL_Driver/Src \
 Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src \
 Middlewares/ST/STM32_USB_Device_Library/Core/Src \
+Middlewares/USB_HID_Keyboard_Handler/src \
 Src \
 startup \
 
