@@ -88,6 +88,11 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
+	uint8_t btn_a_pressed = 0;
+	uint8_t btn_b_pressed = 0;
+	uint8_t btn_c_pressed = 0;
+	uint8_t btn_d_pressed = 0;
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -122,9 +127,63 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-	  usb_hid_presenter_execute(PPT_BTN_ALT_TAB);
 
   /* USER CODE BEGIN 3 */
+	  if(GPIO_PIN_SET == HAL_GPIO_ReadPin(BTN_A_GPIO_Port, BTN_A_Pin))
+	  {
+		  if (btn_a_pressed == 0)
+		  {
+			  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+			  btn_a_pressed = 1;
+			  usb_hid_presenter_execute(PPT_BTN_PREV);
+		  }
+	  }
+	  else
+	  {
+		  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+		  btn_a_pressed = 0;
+	  }
+
+	  if(GPIO_PIN_SET == HAL_GPIO_ReadPin(BTN_B_GPIO_Port, BTN_B_Pin))
+	  {
+		  if (btn_b_pressed == 0)
+		  {
+			  btn_b_pressed = 1;
+			  usb_hid_presenter_execute(PPT_BTN_NEXT);
+		  }
+	  }
+	  else
+	  {
+		  btn_b_pressed = 0;
+	  }
+
+	  if(GPIO_PIN_SET == HAL_GPIO_ReadPin(BTN_C_GPIO_Port, BTN_C_Pin))
+	  {
+		  if (btn_c_pressed == 0)
+		  {
+			  btn_c_pressed = 1;
+			  usb_hid_presenter_execute(PPT_BTN_START);
+		  }
+	  }
+	  else
+	  {
+		  btn_c_pressed = 0;
+	  }
+
+	  if(GPIO_PIN_SET == HAL_GPIO_ReadPin(BTN_D_GPIO_Port, BTN_D_Pin))
+	  {
+		  if (btn_d_pressed == 0)
+		  {
+			  btn_d_pressed = 1;
+			  usb_hid_presenter_execute(PPT_BTN_END);
+		  }
+	  }
+	  else
+	  {
+		  btn_d_pressed = 0;
+	  }
+
+	  HAL_Delay(100);
   }
   /* USER CODE END 3 */
 

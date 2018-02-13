@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/Argandas/Desktop/PPT_Remote/Inc
+HeaderPath=C:/git/ppt_remote/PPT_Remote/Inc
 HeaderFiles=gpio.h;dma.h;usart.h;usb_device.h;usbd_conf.h;usbd_desc.h;stm32l4xx_it.h;stm32l4xx_hal_conf.h;main.h;
-SourcePath=C:/Users/Argandas/Desktop/PPT_Remote/Src
+SourcePath=C:/git/ppt_remote/PPT_Remote/Src
 SourceFiles=gpio.c;dma.c;usart.c;usb_device.c;usbd_conf.c;usbd_desc.c;stm32l4xx_it.c;stm32l4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]
