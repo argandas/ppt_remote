@@ -9,11 +9,16 @@
 #include "usb_device.h"
 #include "usbd_hid.h"
 
+#define TIMEOUT_KEYBOARD_MS (100u)
+
 usb_hid_keyboard_t usb_hid_keyboard;
+
 
 uint8_t usb_hid_keyboard_press_key(uint8_t mod, uint8_t key)
 {
 	uint8_t ret = 0;
+
+	uint32_t Tickstart = HAL_GetTick();
 
 	usb_hid_keyboard.report_id = 0x01;
 	usb_hid_keyboard.modifier = mod;
@@ -25,8 +30,15 @@ uint8_t usb_hid_keyboard_press_key(uint8_t mod, uint8_t key)
 
     if (USBD_OK == USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&usb_hid_keyboard, sizeof(usb_hid_keyboard_t)))
     {
-    	ret = 1;
-		HAL_Delay(30);
+    	while(((USBD_HID_HandleTypeDef *)hUsbDeviceFS.pClassData)->state == HID_BUSY)
+    	{
+    		if ((HAL_GetTick() - Tickstart) > TIMEOUT_KEYBOARD_MS)
+			{
+				break;
+			}
+    	}
+
+		ret = 1;
     }
 
     return ret;
@@ -35,6 +47,8 @@ uint8_t usb_hid_keyboard_press_key(uint8_t mod, uint8_t key)
 uint8_t usb_hid_keyboard_release_key(uint8_t mod, uint8_t key)
 {
 	uint8_t ret = 0;
+
+	uint32_t Tickstart = HAL_GetTick();
 
 	usb_hid_keyboard.report_id = 0x01;
 	usb_hid_keyboard.modifier = USB_HID_MOD_NONE;
@@ -46,8 +60,15 @@ uint8_t usb_hid_keyboard_release_key(uint8_t mod, uint8_t key)
 
     if (USBD_OK == USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&usb_hid_keyboard, sizeof(usb_hid_keyboard_t)))
     {
-    	ret = 1;
-		HAL_Delay(30);
+    	while(((USBD_HID_HandleTypeDef *)hUsbDeviceFS.pClassData)->state == HID_BUSY)
+    	{
+    		if ((HAL_GetTick() - Tickstart) > TIMEOUT_KEYBOARD_MS)
+			{
+				break;
+			}
+    	}
+
+		ret = 1;
     }
 
     return ret;

@@ -88,12 +88,11 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
+  /* USER CODE BEGIN 1 */
 	uint8_t btn_a_pressed = 0;
 	uint8_t btn_b_pressed = 0;
 	uint8_t btn_c_pressed = 0;
 	uint8_t btn_d_pressed = 0;
-
-  /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
 
@@ -133,14 +132,12 @@ int main(void)
 	  {
 		  if (btn_a_pressed == 0)
 		  {
-			  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
 			  btn_a_pressed = 1;
 			  usb_hid_presenter_execute(PPT_BTN_PREV);
 		  }
 	  }
 	  else
 	  {
-		  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
 		  btn_a_pressed = 0;
 	  }
 
@@ -183,7 +180,14 @@ int main(void)
 		  btn_d_pressed = 0;
 	  }
 
-	  HAL_Delay(100);
+	  if (btn_a_pressed | btn_b_pressed | btn_c_pressed | btn_d_pressed)
+	  {
+		  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+	  }
+	  else
+	  {
+		  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+	  }
   }
   /* USER CODE END 3 */
 

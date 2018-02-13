@@ -63,10 +63,10 @@
 #define MCO_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
-#define BTN_A_Pin GPIO_PIN_0
-#define BTN_A_GPIO_Port GPIOB
-#define BTN_D_Pin GPIO_PIN_1
-#define BTN_D_GPIO_Port GPIOB
+#define BTN_C_Pin GPIO_PIN_0
+#define BTN_C_GPIO_Port GPIOB
+#define BTN_B_Pin GPIO_PIN_1
+#define BTN_B_GPIO_Port GPIOB
 #define BTN_RCV_Pin GPIO_PIN_8
 #define BTN_RCV_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
@@ -77,10 +77,10 @@
 #define VCP_RX_GPIO_Port GPIOA
 #define LD3_Pin GPIO_PIN_3
 #define LD3_GPIO_Port GPIOB
-#define BTN_C_Pin GPIO_PIN_6
-#define BTN_C_GPIO_Port GPIOB
-#define BTN_B_Pin GPIO_PIN_7
-#define BTN_B_GPIO_Port GPIOB
+#define BTN_D_Pin GPIO_PIN_6
+#define BTN_D_GPIO_Port GPIOB
+#define BTN_A_Pin GPIO_PIN_7
+#define BTN_A_GPIO_Port GPIOB
 
 /* ########################## Assert Selection ############################## */
 /**
